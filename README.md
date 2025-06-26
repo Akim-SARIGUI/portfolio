@@ -73,3 +73,12 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+# Mon Portfolio
+
+Portfolio professionnel développé avec Vue.js et Vuetify
+
+## Fonctionnalités
+- Section "À propos"
+- Galerie de projets
+- Formulaire de contact
