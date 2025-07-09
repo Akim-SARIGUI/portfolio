@@ -20,13 +20,13 @@ const socialLinks = [
     },
     {
         icon: 'mdi-github',
-        link: 'https://github.com/sariguiakim',
+        link: 'https://github.com/Akim-SARIGUI',
         color: '#181717',
         name: 'GitHub'
     },
     {
         icon: 'mdi-whatsapp',
-        link: 'https://wa.me/22990194751',
+        link: 'https://wa.me/22990194751954',
         color: '#25D366',
         name: 'WhatsApp'
     },

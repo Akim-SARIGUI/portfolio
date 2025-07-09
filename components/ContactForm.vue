@@ -68,7 +68,7 @@
 
                                 <div class="mt-auto">
                                     <p class="text-body-1 mb-4">
-                                        Disponible du lundi au vendredi, de 9h à 18h
+                                        Disponible pour vous satisfaire !!!
                                     </p>
                                     <SocialLinks class="social-links" />
                                 </div>
@@ -99,26 +99,26 @@ const contactItems = [
     {
         icon: 'mdi-email',
         title: 'Email professionnel',
-        subtitle: 'contact@sariguiakim.com',
-        href: 'mailto:contact@sariguiakim.com'
+        subtitle: 'sariguiakim@gmail.com',
+        href: 'mailto:sariguiakim@gmail.com'
     },
     {
         icon: 'mdi-phone',
         title: 'Téléphone/WhatsApp',
-        subtitle: '+229 90 19 47 51',
-        href: 'https://wa.me/22990194751'
+        subtitle: '+229 01 94 75 19 54',
+        href: 'https://wa.me/2290194751954'
     },
     {
         icon: 'mdi-linkedin',
         title: 'LinkedIn',
         subtitle: 'linkedin.com/in/sariguiakim',
-        href: 'https://www.linkedin.com/in/sariguiakim'
+        href: 'https://www.linkedin.com/in/akim-sarigui-216a2b247'
     },
     {
         icon: 'mdi-github',
         title: 'GitHub',
         subtitle: 'github.com/sariguiakim',
-        href: 'https://github.com/sariguiakim'
+        href: 'https://github.com/Akim-SARIGUI'
     }
 ]
 

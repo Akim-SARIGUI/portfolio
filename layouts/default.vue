@@ -110,7 +110,7 @@
   
   const contacts = [
     { icon: 'mdi-email', title: 'Email', value: 'sariguiakim@gmail.com' },
-    { icon: 'mdi-phone', title: 'Téléphone', value: '+229 90 19 47 51' },
+    { icon: 'mdi-phone', title: 'Téléphone', value: '+229 01 94 75 19 54' },
     { icon: 'mdi-map-marker', title: 'Localisation', value: 'Abomey-Calavi, Bénin' },
   ]
   </script>

@@ -74,7 +74,7 @@ const projects = [
         name: 'Portfolio Design',
         description: 'Conception moderne et responsive d\'un portfolio professionnel avec animations fluides.',
         technologies: ['Vue.js', 'Vuetify', 'GSAP', 'SCSS'],
-        image: '/images/project3.jpg',
+        image: '/images/projet3.png',
         link: '#',
         category: 'Design UI/UX'
     }

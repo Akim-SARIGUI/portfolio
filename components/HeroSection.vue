@@ -56,7 +56,7 @@
                                     </v-chip>
                                     <div class="d-flex align-center">
                                         <v-icon icon="mdi-check-circle" color="white" class="mr-2" />
-                                        <span class="text-subtitle-1 font-weight-bold text-white">+15 projets
+                                        <span class="text-subtitle-1 font-weight-bold text-white">+5 projets
                                             réalisés</span>
                                     </div>
                                 </div>
