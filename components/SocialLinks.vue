@@ -35,12 +35,6 @@ const socialLinks = [
         link: 'https://twitter.com/sariguiakim',
         color: '#1DA1F2',
         name: 'Twitter'
-    },
-    {
-        icon: 'mdi-instagram',
-        link: 'https://instagram.com/sariguiakim',
-        color: '#E4405F',
-        name: 'Instagram'
     }
 ]
 </script>

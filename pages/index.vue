@@ -1,22 +1,34 @@
 <template>
   <div class="portfolio-container">
-    <!-- Hero Section -->
-    <HeroSection class="section hero-section" />
+    <!-- Hero Section avec espace pour le header -->
+    <section id="home" class="first-section">
+      <HeroSection class="section hero-section" />
+    </section>
     
     <!-- About Section -->
-    <AboutSection class="section about-section" />
+    <section id="about">
+      <AboutSection class="section about-section" />
+    </section>
     
     <!-- Experience Section -->
-    <ExperienceTimeline class="section experience-section" />
+    <section id="experience">
+      <ExperienceTimeline class="section experience-section" />
+    </section>
     
     <!-- Skills Section -->
-    <SkillsChart class="section skills-section" />
+    <section id="skills">
+      <SkillsChart class="section skills-section" />
+    </section>
     
     <!-- Projects Section -->
-    <ProjectsGallery class="section projects-section" />
+    <section id="projects">
+      <ProjectsGallery class="section projects-section" />
+    </section>
     
     <!-- Contact Section -->
-    <ContactForm class="section contact-section" />
+    <section id="contact">
+      <ContactForm class="section contact-section" />
+    </section>
   </div>
 </template>
 
@@ -34,11 +46,20 @@ import ContactForm from '@/components/ContactForm.vue'
   scroll-behavior: smooth;
   position: relative;
   background-color: #fafafa;
+  padding-top: 0; /* Pas de padding supplémentaire */
+}
+
+/* Marges de scroll pour les sections */
+section {
+  scroll-margin-top: 80px; /* Compense la hauteur du header */
+}
+
+.first-section {
+  scroll-margin-top: 0; /* Première section n'a pas besoin de compensation */
 }
 
 .section {
   position: relative;
-  padding: 5rem 0;
   overflow: hidden;
   
   // Effet de transition douce entre sections
@@ -55,9 +76,12 @@ import ContactForm from '@/components/ContactForm.vue'
 
 // Hero Section spécifique
 .hero-section {
-  min-height: 100vh;
-  padding-bottom: 1em;
+  min-height: calc(100vh - 64px); /* Compense la hauteur du header */
+  display: flex;
+  align-items: center;
+  padding: 4rem 0 2rem;
   background: rgba(95, 95, 95, 0.13);
+  
   & + .about-section::before {
     display: none;
   }
@@ -65,26 +89,31 @@ import ContactForm from '@/components/ContactForm.vue'
 
 // About Section
 .about-section {
+  padding: 6rem 0;
   background-color: #FFFFFF62;
 }
 
 // Experience Section
 .experience-section {
+  padding: 6rem 0;
   background-color: #27242431;
 }
 
 // Skills Section
 .skills-section {
+  padding: 6rem 0;
   background-color: #8F8F8FFF;
 }
 
 // Projects Section
 .projects-section {
+  padding: 6rem 0;
   background-color: #f5f5f5;
 }
 
 // Contact Section
 .contact-section {
+  padding: 6rem 0;
   background-color: #ffffff;
 }
 
@@ -105,13 +134,39 @@ import ContactForm from '@/components/ContactForm.vue'
 
 // Responsive
 @media (max-width: 992px) {
-  .section {
+  section {
+    scroll-margin-top: 70px;
+  }
+  
+  .hero-section {
+    min-height: calc(100vh - 70px);
+    padding: 3rem 0 1rem;
+  }
+  
+  .about-section,
+  .experience-section,
+  .skills-section,
+  .projects-section,
+  .contact-section {
     padding: 4rem 0;
   }
 }
 
 @media (max-width: 768px) {
-  .section {
+  section {
+    scroll-margin-top: 56px; /* Header plus petit sur mobile */
+  }
+  
+  .hero-section {
+    min-height: calc(100vh - 56px);
+    padding: 2rem 0 0;
+  }
+  
+  .about-section,
+  .experience-section,
+  .skills-section,
+  .projects-section,
+  .contact-section {
     padding: 3rem 0;
   }
 }

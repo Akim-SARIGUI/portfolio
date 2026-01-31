@@ -1,4 +1,7 @@
 
+/// <reference path="app.config.d.ts" />
+/// <reference path="runtime-config.d.ts" />
+/// <reference types="D:/Mes projets/portfolio/node_modules/.pnpm/@nuxt+nitro-server@3.20.2_db0@0.3.4_ioredis@5.8.2_magicast@0.5.1_nuxt@3.20.2_@parcel+watcher@_4wtijm5idmxtyc4m647xcvllqq/node_modules/@nuxt/nitro-server/dist/index.mjs" />
 /// <reference path="nitro-middleware.d.ts" />
 /// <reference path="./schema.d.ts" />
 

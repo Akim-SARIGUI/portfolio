@@ -1,9 +1,9 @@
 {
-  "_hash": "_iOBcpRSWgyCmIOAPpTQrADNH4EzZi5pGhulW2DJ9LY",
+  "_hash": "Hm6gdo4MrAeb0aTgYlRL7ASm34-hfygSj7n9LKFNTOY",
   "project": {
-    "rootDir": "/home/akim/portfolio"
+    "rootDir": "D:/Mes projets/portfolio"
   },
   "versions": {
-    "nuxt": "3.17.5"
+    "nuxt": "3.20.2"
   }
 }
