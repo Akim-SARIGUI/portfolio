@@ -1,0 +1,31 @@
+# compiled output
+/dist
+/node_modules
+/build
+
+# env
+.env
+.env.local
+
+# logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / IDE
+.DS_Store
+.idea
+.vscode
+
+# test / coverage
+/coverage
+/.nyc_output
+
+# prisma
+# keep migrations
+
+# misc
+*.tsbuildinfo

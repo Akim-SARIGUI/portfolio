@@ -211,6 +211,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import type { Project } from '~/types/portfolio'
 
 const headerRef = ref<HTMLElement | null>(null)
 const projectsRef = ref<HTMLElement | null>(null)
@@ -220,60 +221,9 @@ const isHeaderVisible = ref(false)
 const isProjectsVisible = ref(false)
 const isCtaVisible = ref(false)
 
-const projects = [
-  {
-    id: 1,
-    name: 'Kitungamama.com',
-    description: 'Plateforme e-commerce complète dédiée à la promotion et la vente de produits agroalimentaires locaux béninois. Une solution digitale pour connecter les producteurs locaux aux consommateurs.',
-    features: [
-      'Catalogue produits avec filtres avancés',
-      'Système de commande et panier sécurisé',
-      'Gestion des livraisons',
-      'Interface d\'administration complète'
-    ],
-    technologies: [
-      { name: 'WordPress', icon: 'mdi-wordpress', color: '#21759B' },
-      { name: 'WooCommerce', icon: 'mdi-cart', color: '#96588A' },
-      { name: 'PHP', icon: 'mdi-language-php', color: '#777BB4' },
-      { name: 'MySQL', icon: 'mdi-database', color: '#4479A1' }
-    ],
-    image: '/images/im4.png',
-    liveUrl: 'https://kitungamama.com',
-    githubUrl: null,
-    category: 'E-commerce',
-    icon: 'mdi-store',
-    color: '#22c55e',
-    gradient: 'linear-gradient(135deg, #22c55e, #16a34a)',
-    status: 'live',
-    year: '2024'
-  },
-  {
-    id: 2,
-    name: 'AgriManage Pro',
-    description: 'Application web de gestion agricole complète permettant aux agriculteurs de suivre leurs cultures, gérer leurs stocks et analyser leurs performances grâce à des tableaux de bord interactifs.',
-    features: [
-      'Suivi des cultures et récoltes',
-      'Gestion des stocks et inventaires',
-      'Tableau de bord analytique',
-      'Rapports et statistiques en temps réel'
-    ],
-    technologies: [
-      { name: 'Vue.js', icon: 'mdi-vuejs', color: '#42b883' },
-      { name: 'Nuxt.js', icon: 'mdi-nuxt', color: '#00DC82' },
-      { name: 'Node.js', icon: 'mdi-nodejs', color: '#339933' },
-      { name: 'PostgreSQL', icon: 'mdi-database', color: '#336791' }
-    ],
-    image: '/images/im3.png',
-    liveUrl: null,
-    githubUrl: 'https://github.com/Akim-SARIGUI',
-    category: 'Web Application',
-    icon: 'mdi-sprout',
-    color: '#667eea',
-    gradient: 'linear-gradient(135deg, #667eea, #764ba2)',
-    status: 'dev',
-    year: '2024'
-  }
-]
+const api = useApi()
+const { data: projectsData } = await useAsyncData('projects', () => api.getProjects())
+const projects = computed(() => (projectsData.value as Project[] | null) ?? [])
 
 onMounted(() => {
   const createObserver = (

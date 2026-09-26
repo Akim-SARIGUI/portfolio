@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  title       String
+  bio         String
+  email       String
+  phone       String?
+  linkedin    String?
+  github      String?
+  location    String?
+  available   Boolean  @default(true)
+  yearsXp     Int      @default(3)
+  photoUrl    String?
+  cvUrl       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id           String   @id @default(cuid())
+  name         String
+  description  String
+  features     String[]
+  technologies Json
+  image        String
+  liveUrl      String?
+  githubUrl    String?
+  category     String
+  icon         String
+  color        String
+  gradient     String
+  status       String   @default("dev")
+  year         String
+  sortOrder    Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Experience {
+  id           String   @id @default(cuid())
+  position     String
+  company      String
+  period       String
+  description  String
+  achievements String[]
+  skills       String[]
+  icon         String
+  companyIcon  String
+  gradient     String
+  sortOrder    Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum SkillCategory {
+  TECHNICAL
+  FRAMEWORK
+  TOOL
+  DATABASE
+  SOFT
+}
+
+model Skill {
+  id          String        @id @default(cuid())
+  name        String
+  category    SkillCategory
+  level       Int?
+  description String?
+  icon        String
+  color       String?
+  bgColor     String?
+  gradient    String?
+  type        String?
+  sortOrder   Int           @default(0)
+  published   Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

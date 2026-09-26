@@ -1,2 +1,30 @@
-node_modules/\n.env\ndist/\n*.log\n.DS_Store
-node_modules
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Env
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Nuxt
+.nuxt/
+.output/
+dist/
+.data/
+
+# Nest
+backend/dist/
+backend/coverage/
+
+# Logs / OS
+*.log
+.DS_Store
+*.swp
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

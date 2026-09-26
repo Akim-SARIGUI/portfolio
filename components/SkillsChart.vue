@@ -240,108 +240,25 @@ const isHeaderVisible = ref(false)
 const isSkillsVisible = ref(false)
 const isSoftVisible = ref(false)
 
-const technicalSkills = [
-  {
-    name: 'JavaScript / TypeScript',
-    level: 90,
-    icon: 'mdi-language-typescript',
-    color: '#3178C6',
-    bgColor: 'rgba(49, 120, 198, 0.1)',
-    gradient: 'linear-gradient(90deg, #3178C6, #60a5fa)'
-  },
-  {
-    name: 'Java',
-    level: 60,
-    icon: 'mdi-language-java',
-    color: '#ED8B00',
-    bgColor: 'rgba(237, 139, 0, 0.1)',
-    gradient: 'linear-gradient(90deg, #ED8B00, #f59e0b)'
-  },
-  {
-    name: 'HTML5 / CSS3',
-    level: 95,
-    icon: 'mdi-language-html5',
-    color: '#E34F26',
-    bgColor: 'rgba(227, 79, 38, 0.1)',
-    gradient: 'linear-gradient(90deg, #E34F26, #ef4444)'
-  },
-  {
-    name: 'SQL',
-    level: 80,
-    icon: 'mdi-database-search',
-    color: '#336791',
-    bgColor: 'rgba(51, 103, 145, 0.1)',
-    gradient: 'linear-gradient(90deg, #336791, #06b6d4)'
-  }
-]
+import type { SkillsGrouped } from '~/types/portfolio'
 
-const frameworks = [
-  { name: 'Vue.js', icon: 'mdi-vuejs', color: '#42b883', bgColor: 'rgba(66, 184, 131, 0.1)' },
-  { name: 'Nuxt.js', icon: 'mdi-nuxt', color: '#00DC82', bgColor: 'rgba(0, 220, 130, 0.1)' },
-  { name: 'Spring Boot', icon: 'mdi-leaf', color: '#6DB33F', bgColor: 'rgba(109, 179, 63, 0.1)' },
-  { name: 'Node.js', icon: 'mdi-nodejs', color: '#339933', bgColor: 'rgba(51, 153, 51, 0.1)' },
-  { name: 'Express', icon: 'mdi-server-network', color: '#000000', bgColor: 'rgba(0, 0, 0, 0.05)' },
-  { name: 'Vuetify', icon: 'mdi-vuetify', color: '#1867C0', bgColor: 'rgba(24, 103, 192, 0.1)' },
-  { name: 'Tailwind', icon: 'mdi-tailwind', color: '#06B6D4', bgColor: 'rgba(6, 182, 212, 0.1)' },
-  { name: 'Bootstrap', icon: 'mdi-bootstrap', color: '#7952B3', bgColor: 'rgba(121, 82, 179, 0.1)' }
-]
+const api = useApi()
+const { data: skillsData } = await useAsyncData('skills', () => api.getSkills())
 
-const tools = [
-  { name: 'Git', icon: 'mdi-git', color: '#F05032' },
-  { name: 'Docker', icon: 'mdi-docker', color: '#2496ED' },
-  { name: 'VS Code', icon: 'mdi-microsoft-visual-studio-code', color: '#007ACC' },
-  { name: 'IntelliJ', icon: 'mdi-intellij-idea', color: '#000000' },
-  { name: 'Postman', icon: 'mdi-api', color: '#FF6C37' },
-  { name: 'Figma', icon: 'mdi-pencil-ruler', color: '#F24E1E' },
-  { name: 'Linux', icon: 'mdi-linux', color: '#FCC624' },
-  { name: 'npm', icon: 'mdi-npm', color: '#CB3837' }
-]
+const emptySkills: SkillsGrouped = {
+  technical: [],
+  frameworks: [],
+  tools: [],
+  databases: [],
+  soft: [],
+}
 
-const databases = [
-  { name: 'PostgreSQL', type: 'Relationnel', icon: 'mdi-elephant', gradient: 'linear-gradient(135deg, #336791, #5A8BB8)' },
-  { name: 'MySQL', type: 'Relationnel', icon: 'mdi-database', gradient: 'linear-gradient(135deg, #4479A1, #00758F)' },
-  { name: 'MongoDB', type: 'NoSQL', icon: 'mdi-leaf', gradient: 'linear-gradient(135deg, #47A248, #4DB33D)' },
-  { name: 'Firebase', type: 'Cloud', icon: 'mdi-firebase', gradient: 'linear-gradient(135deg, #FFA000, #F57C00)' }
-]
-
-const softSkills = [
-  {
-    name: 'Problem Solving',
-    description: 'Analyse et résolution créative de problèmes complexes',
-    icon: 'mdi-puzzle',
-    gradient: 'linear-gradient(135deg, #667eea, #764ba2)'
-  },
-  {
-    name: 'Travail d\'équipe',
-    description: 'Collaboration efficace dans des environnements agiles',
-    icon: 'mdi-account-group',
-    gradient: 'linear-gradient(135deg, #22c55e, #16a34a)'
-  },
-  {
-    name: 'Communication',
-    description: 'Transmission claire des idées techniques',
-    icon: 'mdi-message-text',
-    gradient: 'linear-gradient(135deg, #f59e0b, #ea580c)'
-  },
-  {
-    name: 'Adaptabilité',
-    description: 'Apprentissage rapide des nouvelles technologies',
-    icon: 'mdi-sync',
-    gradient: 'linear-gradient(135deg, #ec4899, #be185d)'
-  },
-  {
-    name: 'Autonomie',
-    description: 'Gestion efficace des projets en indépendance',
-    icon: 'mdi-account-check',
-    gradient: 'linear-gradient(135deg, #06b6d4, #0891b2)'
-  },
-  {
-    name: 'Créativité',
-    description: 'Solutions innovantes et approche UX centrée',
-    icon: 'mdi-lightbulb-on',
-    gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9)'
-  }
-]
+const skills = computed(() => (skillsData.value as SkillsGrouped | null) ?? emptySkills)
+const technicalSkills = computed(() => skills.value.technical)
+const frameworks = computed(() => skills.value.frameworks)
+const tools = computed(() => skills.value.tools)
+const databases = computed(() => skills.value.databases)
+const softSkills = computed(() => skills.value.soft)
 
 onMounted(() => {
   const createObserver = (

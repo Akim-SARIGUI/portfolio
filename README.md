@@ -1,84 +1,71 @@
-# Nuxt Minimal Starter
+# Portfolio — Akim Sarigui
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Portfolio fullstack : **Nuxt 4** (front) + **NestJS** + **PostgreSQL** + **Prisma** (API).
 
-## Setup
+## Stack
 
-Make sure to install dependencies:
+| Couche | Techno |
+|--------|--------|
+| Frontend | Nuxt 4, Vue 3, Vuetify 3 |
+| Backend | NestJS 11 |
+| ORM | Prisma 6 |
+| DB | PostgreSQL 16 (Docker) |
+
+## Prérequis
+
+- Node.js 20+
+- pnpm
+- Docker
+
+## Démarrage rapide
 
 ```bash
-# npm
-npm install
+# 1. Base de données
+docker compose up -d
 
-# pnpm
+# 2. Backend
+cd backend
+cp .env.example .env
 pnpm install
+pnpm prisma:migrate
+pnpm prisma:seed
+pnpm start:dev
+# → http://localhost:3001/api
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
+# 3. Frontend (autre terminal, racine du repo)
+cp .env.example .env
+pnpm install
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+# → http://localhost:3000
 ```
 
-## Production
+## API
 
-Build the application for production:
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| GET | `/api/health` | Santé |
+| GET | `/api/profile` | Profil |
+| GET | `/api/projects` | Projets |
+| GET | `/api/experiences` | Expériences |
+| GET | `/api/skills` | Compétences (groupées) |
+| POST | `/api/messages` | Formulaire contact |
+
+## Variables d'environnement
+
+**Backend** (`backend/.env`)
+
+- `DATABASE_URL` — Postgres (défaut port **5434**)
+- `PORT` — défaut `3001`
+- `CORS_ORIGIN` — défaut `http://localhost:3000`
+
+**Frontend** (`.env`)
+
+- `NUXT_PUBLIC_API_BASE` — défaut `http://localhost:3001/api`
+
+## Scripts utiles (racine)
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+pnpm db:up
+pnpm dev:api
+pnpm db:seed
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-# Mon Portfolio
-
-Portfolio professionnel développé avec Vue.js et Vuetify
-
-## Fonctionnalités
-- Section "À propos"
-- Galerie de projets
-- Formulaire de contact

@@ -156,53 +156,11 @@ const isHeaderVisible = ref(false)
 const isTimelineVisible = ref(false)
 const isCtaVisible = ref(false)
 
-const experiences = [
-  {
-    position: "Développeur Web Fullstack",
-    company: "Freelance",
-    period: "2022 - Présent",
-    description: "Conception et développement d'applications web modernes pour divers clients. Spécialisation dans l'écosystème Vue.js/Nuxt.js avec une approche orientée performance et expérience utilisateur.",
-    achievements: [
-      "Développement de plusieurs applications web complètes",
-      "Amélioration des performances de 40%",
-      "Mise en place de CI/CD et bonnes pratiques"
-    ],
-    skills: ["Vue.js", "Nuxt.js", "Node.js", "PostgreSQL", "Docker...."],
-    icon: "mdi-code-braces",
-    companyIcon: "mdi-laptop",
-    gradient: "linear-gradient(135deg, #667eea, #764ba2)"
-  },
-  {
-    position: "Enseignant Mathématiques",
-    company: "Collèges & Lycées",
-    period: "2020 - Présent",
-    description: "Enseignement des mathématiques avec des méthodes pédagogiques innovantes. Préparation aux examens nationaux et accompagnement personnalisé des élèves.",
-    achievements: [
-      "Taux de réussite de 85%+ aux examens",
-      "Création de supports pédagogiques numériques",
-      "Accompagnement de 200+ élèves"
-    ],
-    skills: ["Pédagogie", "Communication", "Organisation", "Patience"],
-    icon: "mdi-school",
-    companyIcon: "mdi-school",
-    gradient: "linear-gradient(135deg, #22c55e, #16a34a)"
-  },
-  {
-    position: "Stagiaire Développeur",
-    company: "Tics Master",
-    period: "2024 - 2025",
-    description: "Stage en développement web et gestion de projets informatiques. Participation à la conception d'interfaces utilisateur et développement backend.",
-    achievements: [
-      "Contribution à 3 projets clients",
-      "Apprentissage des méthodologies Agile",
-      "Développement de compétences UI/UX"
-    ],
-    skills: ["HTML/CSS", "JavaScript", "Node", "PostgreSQL"],
-    icon: "mdi-rocket-launch",
-    companyIcon: "mdi-domain",
-    gradient: "linear-gradient(135deg, #f59e0b, #ea580c)"
-  }
-]
+import type { Experience } from '~/types/portfolio'
+
+const api = useApi()
+const { data: experiencesData } = await useAsyncData('experiences', () => api.getExperiences())
+const experiences = computed(() => (experiencesData.value as Experience[] | null) ?? [])
 
 const getParticleStyle = (index: number) => {
   const colors = ['#667eea', '#764ba2', '#22c55e', '#f59e0b', '#ec4899', '#06b6d4']

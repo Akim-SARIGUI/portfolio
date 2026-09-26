@@ -125,6 +125,8 @@ const contactItems = [
 const requiredRule = (value: string) => !!value || 'Ce champ est requis'
 const emailRule = (value: string) => /.+@.+\..+/.test(value) || 'Email invalide'
 
+const api = useApi()
+
 const submitForm = async () => {
     if (!name.value || !email.value || !subject.value || !message.value) {
         showSnackbar('Veuillez remplir tous les champs', 'error')
@@ -134,20 +136,15 @@ const submitForm = async () => {
     loading.value = true
 
     try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500))
-
-        // In a real app, you would send the form data to your backend here
-        console.log('Form submitted:', {
+        await api.sendMessage({
             name: name.value,
             email: email.value,
             subject: subject.value,
-            message: message.value
+            message: message.value,
         })
 
         showSnackbar('Message envoyé avec succès !', 'success')
 
-        // Reset form
         name.value = ''
         email.value = ''
         subject.value = ''
