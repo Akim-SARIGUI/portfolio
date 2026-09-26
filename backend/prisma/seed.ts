@@ -32,12 +32,12 @@ async function main() {
       {
         name: 'Kitungamama.com',
         description:
-          'E-commerce agroalimentaire béninois : catalogue, panier et livraisons pour relier producteurs locaux et consommateurs.',
+          'Plateforme e-commerce complète dédiée à la promotion et la vente de produits agroalimentaires locaux béninois. Une solution digitale pour connecter les producteurs locaux aux consommateurs.',
         features: [
           'Catalogue produits avec filtres avancés',
-          'Commande & panier sécurisés',
+          'Système de commande et panier sécurisé',
           'Gestion des livraisons',
-          "Back-office d'administration",
+          "Interface d'administration complète",
         ],
         technologies: [
           { name: 'WordPress', icon: 'mdi-wordpress', color: '#21759B' },
@@ -45,7 +45,7 @@ async function main() {
           { name: 'PHP', icon: 'mdi-language-php', color: '#777BB4' },
           { name: 'MySQL', icon: 'mdi-database', color: '#4479A1' },
         ],
-        image: '/images/projects/kitungamama.png',
+        image: '/images/im4.png',
         liveUrl: 'https://kitungamama.com',
         githubUrl: null,
         category: 'E-commerce',
@@ -113,20 +113,20 @@ async function main() {
       {
         name: 'AgriManage Pro',
         description:
-          'SaaS de gestion agricole : cultures, stocks et tableaux de bord pour piloter une ferme au quotidien.',
+          'Application web de gestion agricole complète permettant aux agriculteurs de suivre leurs cultures, gérer leurs stocks et analyser leurs performances grâce à des tableaux de bord interactifs.',
         features: [
-          'Suivi cultures & récoltes',
-          'Inventaire et stocks',
-          'Dashboard analytique',
-          'API NestJS sécurisée (JWT)',
+          'Suivi des cultures et récoltes',
+          'Gestion des stocks et inventaires',
+          'Tableau de bord analytique',
+          'Rapports et statistiques en temps réel',
         ],
         technologies: [
-          { name: 'Nuxt 4', icon: 'mdi-nuxt', color: '#00DC82' },
-          { name: 'NestJS', icon: 'mdi-nodejs', color: '#E0234E' },
-          { name: 'Prisma', icon: 'mdi-database-cog', color: '#2D3748' },
+          { name: 'Vue.js', icon: 'mdi-vuejs', color: '#42b883' },
+          { name: 'Nuxt.js', icon: 'mdi-nuxt', color: '#00DC82' },
+          { name: 'Node.js', icon: 'mdi-nodejs', color: '#339933' },
           { name: 'PostgreSQL', icon: 'mdi-database', color: '#336791' },
         ],
-        image: '/images/projects/agrimanage.png',
+        image: '/images/im3.png',
         liveUrl: null,
         githubUrl: 'https://github.com/Akim-SARIGUI/AgriManage',
         category: 'SaaS',
@@ -206,7 +206,7 @@ async function main() {
           { name: 'CSS3', icon: 'mdi-language-css3', color: '#1572B6' },
           { name: 'JavaScript', icon: 'mdi-language-javascript', color: '#F7DF1E' },
         ],
-        image: '/images/projects/alpaca.png',
+        image: '/images/projet3.png',
         liveUrl: null,
         githubUrl:
           'https://github.com/Akim-SARIGUI/Site-Web-du-generateur-d-images-alpaca-',

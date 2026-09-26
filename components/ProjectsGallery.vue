@@ -64,18 +64,12 @@
 
             <div class="card-image">
               <div class="image-wrapper">
-                <v-img
+                <img
                   :src="project.image"
                   :alt="project.name"
-                  cover
                   class="project-img"
+                  loading="lazy"
                 >
-                  <template #placeholder>
-                    <div class="image-placeholder">
-                      <v-progress-circular indeterminate color="primary" size="40" />
-                    </div>
-                  </template>
-                </v-img>
 
                 <div class="image-overlay">
                   <div class="overlay-content">
@@ -258,10 +252,14 @@ const countByCategory = (cat: string) =>
   projects.value.filter((p) => p.category === cat).length
 
 onMounted(() => {
+  // Affiche les cartes même si l'observer rate (SSR / layout)
+  isHeaderVisible.value = true
+  isProjectsVisible.value = true
+
   const createObserver = (
     element: HTMLElement | null,
     callback: () => void,
-    threshold = 0.1,
+    threshold = 0.08,
   ) => {
     if (!element) return
     const observer = new IntersectionObserver(
@@ -273,20 +271,19 @@ onMounted(() => {
           }
         })
       },
-      { threshold, rootMargin: '0px 0px -30px 0px' },
+      { threshold, rootMargin: '0px 0px -20px 0px' },
     )
     observer.observe(element)
   }
 
-  createObserver(headerRef.value, () => {
-    isHeaderVisible.value = true
-  })
-  createObserver(projectsRef.value, () => {
-    isProjectsVisible.value = true
-  })
   createObserver(ctaRef.value, () => {
     isCtaVisible.value = true
   })
+
+  // Fallback CTA
+  setTimeout(() => {
+    isCtaVisible.value = true
+  }, 1200)
 })
 </script>
 
@@ -634,7 +631,9 @@ $text-muted: #94a3b8;
 .card-image {
   position: relative;
   min-height: 420px;
+  height: 100%;
   overflow: hidden;
+  background: linear-gradient(135deg, rgba($primary, 0.08), rgba($secondary, 0.1));
 
   @media (max-width: 900px) { min-height: 280px; }
   @media (max-width: 600px) { min-height: 220px; }
@@ -645,18 +644,13 @@ $text-muted: #94a3b8;
   inset: 0;
 
   .project-img {
+    display: block;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center top;
     transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   }
-}
-
-.image-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background: linear-gradient(135deg, rgba($primary, 0.1), rgba($secondary, 0.1));
 }
 
 .image-overlay {
